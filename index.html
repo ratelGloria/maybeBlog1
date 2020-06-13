@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--<html xmlns:v-on="http://www.w3.org/1999/xhtml">-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>blog</title>
+    <link type="text/css" rel="stylesheet" href="statics/css/index.css"/>
+
+    <script src="statics/js/vue.min.js" type="text/javascript"></script>
+    <script src="statics/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="statics/js/index.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="head">
+            <div id="head_title"><div>  <span >如果 · 思念</span></div></div>
+            <div id="head_list">
+                <ul id="head_list_ul">
+                    <a href=""><li>随笔</li></a>
+                    <a href=""><li id="study" v-on:click="study">学习</li></a>
+                    <a href=""><li id="studya" v-on:click="studya">学习</li></a>
+                    <a href=""><li>生活</li></a>
+                </ul>
+            </div>
+        </div>
+        <div id="body">
+            <div id="left"></div>
+            <div id="middle"></div>
+            <div id="right"></div>
+        </div>
+        <div id="foot"></div>
+
+        <div id="wantToWrite" v-on:click="wantToWrite"><span>写点什么</span></div>
+
+        <div id="writeBlock">
+            <div style="height: 70px"><input id="writerBlock_title" type="text" placeholder="标题"></div>
+            <div style="height: 200px"><textarea id="writerBlock_content"></textarea></div>
+            <div style="height: 50px"><button id="writerBlock_commit" v-on:click="writerBlock_commit">提交</button></div>
+        </div>
+    </div>
+
+
+</body>
+<!--<script>Vue.config.productionTip=false</script>-->
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        methods:{
+            writerBlock_commit:function (even) {
+                alert('22221')
+                $.ajax({ url: "http://192.168.18.3:8051/WantToWrite/addMessage/"+$("#writerBlock_title").val()+"/"+$("#writerBlock_content").val(),
+                    // context: document.body,
+                    // data: {title:$("#writerBlock_title").val(),content:$("#writerBlock_content").val()},
+                    dataType:"json",
+                    type: "post",
+                    success: function(res){
+                        console.log("aaaaaaa")
+                        console.log(JSON.stringify(res))
+                    },
+                    error: function (res) {
+                        console.log("bbbbb")
+                        console.log(JSON.stringify(res))
+                    }
+                });
+            },
+            wantToWrite: function () {
+                alert('555555')
+            }
+        }
+    })
+</script>
+
+</html>

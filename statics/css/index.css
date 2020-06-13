@@ -1,0 +1,146 @@
+/*#head{*/
+  /*background-color: green;*/
+  /*width: 100%;*/
+  /*height: 30px;*/
+/*}*/
+
+
+  #body div{
+    border:1px solid black;
+    display: inline-block;
+  }
+#left{
+  width: 20%;
+  height: 400px;
+  background-color: aliceblue;
+}
+#middle{
+  width: 70%;
+  height: 400px;
+  background-color: aquamarine;
+}
+#right{
+
+}
+#nameDiv{
+  width: 100px;
+  height: 50px;
+  background-color: blueviolet;
+}
+{
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  mrgin:0px;
+  pradding:0px
+}
+#head {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0e316e;
+  width: 100%;
+  height: 90px;
+  position: relative;
+}
+#app{
+  width: 100%;
+  /*height:1000px;*/
+  /*background-color: aquamarine;*/
+}
+#body{
+  /*margin-top: 120px;*/
+  background-color: #bfe2ff;
+  width: 80%;
+  margin: auto;
+  height: 800px;
+  margin-top: 0px;
+  font-size: 0px;
+  /*margin和padding都设为了0但是div之间还是有空隙，因为换行有一个字符，可以通过设置font-size为0来消除空隙*/
+}
+body{
+  margin: 0px;
+}
+#head_title span{
+  font-size: 20px;
+  color: #d5d5d5;
+  margin-left: 66px;
+}
+#head_title{
+  height: 30px;
+}
+#head_title div{
+  /*margin-top: 22px;*/
+  margin-top: 22px;
+  display: inline-block;
+}
+#head_list_ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin-block-end: 0px;
+  margin-top: 22px;
+}
+#head_list_ul li{
+  /*display: inline-block;*/
+  margin-right: 50px;
+  font-size: 17px;
+  color: aliceblue;
+}
+
+#head_list_ul a{
+  text-decoration: none;
+}
+
+#writeBlock{
+  position: absolute;
+  /* margin: auto; */
+  width: 800px;
+  height: 320px;
+  /* margin-left: auto; */
+  top: 150px;
+  margin-left: 20%;
+  /* margin-right: auto; */
+  background-color: red;
+}
+#wantToWrite{
+  position: fixed;
+  right: 50px;
+  bottom: 100px;
+  width: 80px;
+  height: 30px;
+  background-color: #d5d5d5;
+  border-radius: 10px 10px 10px 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 2px black;
+}
+#wantToWrite span{
+
+}
+#writeBlock div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+}
+#writerBlock_title{
+  width: 700px;
+  height: 30px;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+#writerBlock_content{
+  width: 700px;
+  height: 180px;
+  border-radius: 10px 10px 10px 10px;
+  resize: none;
+}
+#writerBlock_commit{
+  border-radius: 10px 10px 10px 10px;
+  width: 60px;
+  height: 30px;
+}
+
