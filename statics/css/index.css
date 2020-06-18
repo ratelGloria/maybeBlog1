@@ -146,12 +146,12 @@ body{
 
 
 #loginBlock div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  margin: auto;
-}
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 200px;
+   margin: auto;
+ }
 #login_username{
   width: 700px;
   height: 30px;
@@ -168,4 +168,38 @@ body{
   border-radius: 10px 10px 10px 10px;
   width: 60px;
   height: 30px;
+}
+#signUpBlock div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  margin: auto;
+}
+#signUp_username{
+  width: 700px;
+  height: 30px;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+#signUp_pwd{
+  width: 700px;
+  height: 30px;
+  border-radius: 10px 10px 10px 10px;
+
+}
+#signUp_pwd_check{
+  width: 700px;
+  height: 30px;
+  border-radius: 10px 10px 10px 10px;
+
+}
+#signUp_commit{
+  border-radius: 10px 10px 10px 10px;
+  width: 60px;
+  height: 30px;
+}
+#pwd_again_remind{
+  width: 700px;
+  height: 20px;
 }

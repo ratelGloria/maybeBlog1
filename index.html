@@ -32,16 +32,24 @@
 
         <div id="wantToWrite" v-on:click="wantToWrite"><span>写点什么</span></div>
 
-        <div id="writeBlock">
-            <div style="height: 70px"><input id="writerBlock_title" type="text" placeholder="标题"></div>
-            <div style="height: 200px"><textarea id="writerBlock_content"></textarea></div>
-            <div style="height: 50px"><button id="writerBlock_commit" v-on:click="writerBlock_commit">提交</button></div>
-        </div>
+        <!--<div id="writeBlock">-->
+            <!--<div style="height: 70px"><input id="writerBlock_title" type="text" placeholder="标题"></div>-->
+            <!--<div style="height: 200px"><textarea id="writerBlock_content"></textarea></div>-->
+            <!--<div style="height: 50px"><button id="writerBlock_commit" v-on:click="writerBlock_commit">提交</button></div>-->
+        <!--</div>-->
 
         <div id="loginBlock" style="z-index: 100;position: absolute;top: 200px;left: 45%;background-color: #0e316e;width: 300px;">
             <div style="height: 70px"><input id="login_username" type="text" placeholder="username"></div>
             <div style="height: 50px"><input id="login_pwd" type="password" placeholder="password"></div>
             <div style="height: 50px"><button id="login_commit" v-on:click="login_commit">登录</button></div>
+        </div>
+
+        <div id="signUpBlock" style="z-index: 101;position: absolute;top: 200px;left: 45%;background-color: #0e316e;width: 300px;">
+            <div style="height: 70px"><input id="signUp_username" type="text" placeholder="username"></div>
+            <div style="height: 50px"><input id="signUp_pwd" type="password" placeholder="password"></div>
+            <div style="height: 50px"><input id="signUp_pwd_check" type="password" placeholder="again"></div>
+            <div style="height: 20px"><span class="remind" id="pwd_again_remind"></span></div>
+            <div style="height: 50px"><button id="signUp_commit" v-on:click="signUp_commit">注册</button></div>
         </div>
     </div>
 
@@ -51,14 +59,15 @@
 <script type="text/javascript">
     var app = new Vue({
         el: '#app',
-        methods:{
-            writerBlock_commit:function (even) {
-                $.ajax({ url: "http://192.168.18.3:8051/WantToWrite/addMessage/"+$("#writerBlock_title").val()+"/"+$("#writerBlock_content").val(),
+        methods: {
+            writerBlock_commit: function (even) {
+                $.ajax({
+                    url: "http://192.168.18.3:8051/WantToWrite/addMessage/" + $("#writerBlock_title").val() + "/" + $("#writerBlock_content").val(),
                     // context: document.body,
                     // data: {title:$("#writerBlock_title").val(),content:$("#writerBlock_content").val()},
-                    dataType:"json",
+                    dataType: "json",
                     type: "post",
-                    success: function(res){
+                    success: function (res) {
                         console.log("aaaaaa222a")
                         console.log(JSON.stringify(res))
                     },
@@ -67,16 +76,18 @@
                         console.log(JSON.stringify(res))
                     }
                 });
-            },
-            login: function () {
-                $.ajax({ url: "http://192.168.18.3:8051/login/in/"+$("#login_username").val()+"/"+$("#login_pwd").val(),
+            }
+            ,
+            login_commit: function () {
+                $.ajax({
+                    url: "http://192.168.18.3:8051/login/in/" + $("#login_username").val() + "/" + $("#login_pwd").val(),
                     // context: document.body,
                     // data: {title:$("#writerBlock_title").val(),content:$("#writerBlock_content").val()},
-                    dataType:"json",
+                    dataType: "json",
                     type: "post",
-                    success: function(res){
+                    success: function (res) {
                         console.log("aaaaaa222a")
-                        var userInfo = {'username':res};
+                        var userInfo = {'username': res};
                         console.log(JSON.stringify(res))
                         // document.cookie = userInfo;
                     },
@@ -86,6 +97,37 @@
                     }
                 });
             }
+            ,
+            signUp_commit: function () {
+                console.log('-----signUp_commit----')
+                $.ajax({
+                    url: "http://192.168.18.3:8051/login/up/" + $("#signUp_username").val() + "/" + $("#signUp_pwd").val(),
+                    // context: document.body,
+                    // data: {title:$("#writerBlock_title").val(),content:$("#writerBlock_content").val()},
+                    dataType: "json",
+                    type: "post",
+                    success: function (res) {
+                        console.log("aaaaaa222a")
+                        var userInfo = {'username': res};
+                        console.log(JSON.stringify(res))
+                        // document.cookie = userInfo;
+                    },
+                    error: function (res) {
+                        console.log("bbbb1111bcc")
+                        console.log(JSON.stringify(res))
+                    }
+                });
+            }
+        }
+    });
+
+    $("#signUp_pwd_check").blur(function () {
+        console.log($("#signUp_pwd_check").val() +"----"+$("#signUp_pwd").val());
+        if($("#signUp_pwd").val() !="" && $("#signUp_pwd_check").val() != $("#signUp_pwd").val()){
+            $("#pwd_again_remind").text("密码输入错误");
+            $("#pwd_again_remind").css({"color":"red","font-size":"14px"})
+        }else{
+            $("#pwd_again_remind").text("");
         }
     })
 </script>
