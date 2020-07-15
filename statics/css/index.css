@@ -97,14 +97,14 @@ body{
   position: absolute;
   /* margin: auto; */
   width: 800px;
-  height: 320px;
+  height: 390px;
   /* margin-left: auto; */
   top: 150px;
   margin-left: 20%;
   /* margin-right: auto; */
   background-color: red;
 }
-#wantToWrite{
+#wantToWrite_block{
   position: fixed;
   right: 50px;
   bottom: 100px;
@@ -118,7 +118,7 @@ body{
   align-items: center;
   box-shadow: 1px 1px 2px black;
 }
-#wantToWrite span{
+#wantToWrite_block span{
 
 }
 #writeBlock div{

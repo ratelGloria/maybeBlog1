@@ -24,6 +24,9 @@
                 </ul>
             </div>
         </div>
+        <!--<div id="head2" style=" width: 100%;height: 90px;">-->
+
+        <!--</div>-->
         <div id="body">
             <div id="left"></div>
             <div id="middle"></div>
@@ -31,13 +34,14 @@
         </div>
         <div id="foot"></div>
 
-        <div id="wantToWrite" v-on:click="wantToWrite"><span>写点什么</span></div>
+        <div id="wantToWrite_block" ><span>写点什么</span></div>
 
-        <!--<div id="writeBlock">-->
-            <!--<div style="height: 70px"><input id="writerBlock_title" type="text" placeholder="标题"></div>-->
-            <!--<div style="height: 200px"><textarea id="writerBlock_content"></textarea></div>-->
-            <!--<div style="height: 50px"><button id="writerBlock_commit" v-on:click="writerBlock_commit">提交</button></div>-->
-        <!--</div>-->
+        <div id="writeBlock" style="display: none">
+            <div style="height: 70px"><input id="writerBlock_title" type="text" placeholder="标题"></div>
+            <div style="height: 200px"><textarea id="writerBlock_content"></textarea></div>
+            <div style="height: 100px"><input type="file" id="img"/></div>
+            <div style="height: 50px"><button id="writerBlock_commit" v-on:click="writerBlock_commit">提交</button></div>
+        </div>
 
         <div id="loginBlock" style="z-index: 100;position: absolute;top: 200px;left: 45%;background-color: #0e316e;width: 300px;display: none">
             <div style="height: 70px"><input id="login_username" type="text" placeholder="username"></div>
@@ -59,9 +63,17 @@
 </body>
 <!--<script>Vue.config.productionTip=false</script>-->
 <script type="text/javascript">
+    // function getImgURL(node){
+    //     var a = $("#img").get(0).files[0];
+    //     var  reader = new FileReader();
+    //     reader.readAsDataURL(a);
+    //     alert(this.result)
+    //     // alert(JSON.stringify(node))
+    // }
     $(function () {
+
         var session_username = sessionStorage.getItem("username");
-        alert(session_username)
+        // alert(session_username)
         if(session_username != null && session_username !="" && session_username != undefined){
             $("#login").css("display","none")
             $("#user_info").css("display","list-item")
@@ -71,21 +83,23 @@
             el: '#app',
             methods: {
                 writerBlock_commit: function (even) {
-                    $.ajax({
-                        url: "http://192.168.0.113:8051/WantToWrite/addMessage/" + $("#writerBlock_title").val() + "/" + $("#writerBlock_content").val(),
-                        // context: document.body,
-                        // data: {title:$("#writerBlock_title").val(),content:$("#writerBlock_content").val()},
-                        dataType: "json",
-                        type: "post",
-                        success: function (res) {
-                            console.log("aaaaaa222a")
-                            console.log(JSON.stringify(res))
-                        },
-                        error: function (res) {
-                            console.log("bbbb1111bcc")
-                            console.log(JSON.stringify(res))
-                        }
-                    });
+                    alert($("#img").value())
+                    // $.ajax({
+                    //     url: "http://192.168.0.113:8051/WantToWrite/addBlog/" + $("#writerBlock_title").val() + "/" + $("#writerBlock_content").val(),
+                    //     // context: document.body,
+                    //     // data: {title:$("#writerBlock_title").val(),content:$("#writerBlock_content").val()},
+                    //     dataType: "json",
+                    //     type: "post",
+                    //     success: function (res) {
+                    //         console.log("aaaaaa222a")
+                    //         console.log(JSON.stringify(res))
+                    //     },
+                    //     error: function (res) {
+                    //         console.log("bbbb1111bcc")
+                    //         console.log(JSON.stringify(res))
+                    //     }
+                    // });
+                    // $("#writeBlock").css({"display":"none"});
                 }
                 ,
                 login_commit: function () {
@@ -140,8 +154,20 @@
                         }
                     });
                 },
+
             }
         });
+
+
+        $("#img").on("change",function () {
+            var a = $(this).val();
+            alert(a)
+        })
+
+
+        $("#wantToWrite_block").click(function () {
+            $("#writeBlock").css({"display":"block"})
+        })
 
         $("#signUp_pwd_check").blur(function () {
             console.log($("#signUp_pwd_check").val() + "----" + $("#signUp_pwd").val());
